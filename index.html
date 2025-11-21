@@ -18,7 +18,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e);
+            background: linear-gradient(135deg, #2c003e, #5d0756, #8e0e6a);
             overflow: hidden;
             font-family: 'Poppins', sans-serif;
             color: #fff;
@@ -794,13 +794,12 @@
         </div>
         
         <div class="theme-options" id="themeOptions">
-            <div class="theme-option active" style="background: linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e);" data-theme="default"></div>
-            <div class="theme-option" style="background: linear-gradient(135deg, #2c003e, #5d0756, #8e0e6a);" data-theme="purple"></div>
+            <div class="theme-option active" style="background: linear-gradient(135deg, #2c003e, #5d0756, #8e0e6a);" data-theme="default"></div>
+            <div class="theme-option" style="background: linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e);" data-theme="dark"></div>
             <div class="theme-option" style="background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);" data-theme="blue"></div>
             <div class="theme-option" style="background: linear-gradient(135deg, #3c1518, #69140e, #a44200);" data-theme="red"></div>
             <div class="theme-option" style="background: linear-gradient(135deg, #1a1f25, #2d3748, #4a5568);" data-theme="dark"></div>
         </div>
-        
         <div class="footer">
             Made with <i class="fas fa-heart" style="color: #ff1493;"></i> | RONG Official
         </div>
@@ -1027,10 +1026,10 @@
                 // Apply theme
                 switch(theme) {
                     case 'default':
-                        document.body.style.background = 'linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e)';
-                        break;
-                    case 'purple':
                         document.body.style.background = 'linear-gradient(135deg, #2c003e, #5d0756, #8e0e6a)';
+                        break;
+                    case 'dark':
+                        document.body.style.background = 'linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e)';
                         break;
                     case 'blue':
                         document.body.style.background = 'linear-gradient(135deg, #0d1b2a, #1b263b, #415a77)';
