@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enchanted Heart with Fireworks</title>
+    <title>My Tepthida</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,8 +20,9 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e);
             overflow: hidden;
-            font-family: 'Poppins';
+            font-family: 'Poppins', sans-serif;
             color: #fff;
+            transition: background 1.5s ease;
         }
 
         .container {
@@ -31,36 +33,44 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            overflow: hidden;
         }
 
-        /* Enhanced Heart Styles */
+        /* Enhanced Heart Styles - More Beautiful and Detailed */
         .heart-container {
             position: relative;
             z-index: 10;
-            filter: drop-shadow(0 0 25px rgba(255, 20, 147, 0.8));
+            filter: drop-shadow(0 0 35px rgba(255, 20, 147, 0.9));
             margin-bottom: 50px;
+            width: 30vmin;
+            height: 27vmin;
         }
 
         .heart {
             position: relative;
-            width: 240px;
-            height: 220px;
+            width: 100%;
+            height: 100%;
             animation: heartbeat 1.2s infinite;
+            transform-style: preserve-3d;
         }
 
         .heart:before,
         .heart:after {
             position: absolute;
             content: "";
-            left: 120px;
+            left: 50%;
             top: 0;
-            width: 120px;
-            height: 200px;
+            width: 50%;
+            height: 83.33%;
             background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493);
-            border-radius: 120px 120px 0 0;
+            border-radius: 50% 50% 0 0;
             transform: rotate(-45deg);
             transform-origin: 0 100%;
-            box-shadow: 0 0 40px rgba(255, 20, 147, 0.6);
+            box-shadow: 
+                0 0 40px rgba(255, 20, 147, 0.8),
+                0 0 80px rgba(255, 20, 147, 0.6),
+                inset 0 0 20px rgba(255, 255, 255, 0.5);
+            transition: all 0.5s ease;
         }
 
         .heart:after {
@@ -71,10 +81,10 @@
 
         .heart-inner {
             position: absolute;
-            width: 200px;
-            height: 180px;
-            top: 20px;
-            left: 20px;
+            width: 83.33%;
+            height: 75%;
+            top: 8.33%;
+            left: 8.33%;
             z-index: 2;
         }
 
@@ -82,14 +92,15 @@
         .heart-inner:after {
             position: absolute;
             content: "";
-            left: 100px;
+            left: 50%;
             top: 0;
-            width: 100px;
-            height: 160px;
+            width: 50%;
+            height: 83.33%;
             background: linear-gradient(45deg, #ff69b4, #ffb6c1, #ff69b4);
-            border-radius: 100px 100px 0 0;
+            border-radius: 50% 50% 0 0;
             transform: rotate(-45deg);
             transform-origin: 0 100%;
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.7);
         }
 
         .heart-inner:after {
@@ -98,13 +109,26 @@
             transform-origin: 100% 100%;
         }
 
+        .heart-shine {
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            top: 15%;
+            left: 30%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            z-index: 3;
+            opacity: 0.7;
+            animation: shine 3s infinite;
+        }
+
         .heart-glow {
             position: absolute;
-            width: 300px;
-            height: 280px;
-            top: -30px;
-            left: -30px;
-            background: radial-gradient(circle, rgba(255, 20, 147, 0.6) 0%, rgba(255, 20, 147, 0.3) 40%, rgba(255, 20, 147, 0) 70%);
+            width: 125%;
+            height: 116.67%;
+            top: -12.5%;
+            left: -12.5%;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.8) 0%, rgba(255, 20, 147, 0.4) 40%, rgba(255, 20, 147, 0) 70%);
             border-radius: 50%;
             z-index: -1;
             animation: glow 1.2s infinite;
@@ -112,8 +136,8 @@
 
         .heart-sparkle {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 4.17%;
+            height: 4.55%;
             background: white;
             border-radius: 50%;
             filter: blur(1px);
@@ -121,7 +145,18 @@
             z-index: 3;
         }
 
-        /* Heartbeat Animation */
+        .heart-petal {
+            position: absolute;
+            width: 8%;
+            height: 12%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+            border-radius: 50%;
+            z-index: 2;
+            opacity: 0;
+            animation: petal-fall 5s infinite linear;
+        }
+
+        /* Enhanced Heartbeat Animation - Removed floating and rotation */
         @keyframes heartbeat {
             0% {
                 transform: scale(1);
@@ -166,6 +201,34 @@
             50% {
                 opacity: 1;
                 transform: scale(1);
+            }
+        }
+
+        @keyframes shine {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translateX(-10%) translateY(-10%);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateX(10%) translateY(10%);
+            }
+        }
+
+        @keyframes petal-fall {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px) rotate(360deg);
             }
         }
 
@@ -225,24 +288,33 @@
         /* Title Styling */
         .title {
             color: white;
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 2rem;
             text-align: center;
-            text-shadow: 0 0 15px rgba(255, 20, 147, 0.9);
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.9);
             animation: title-pulse 4s infinite;
             z-index: 10;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #ff1493, #ff69b4, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite, title-pulse 4s infinite;
         }
 
         .subtitle {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.5rem;
             margin-bottom: 3rem;
             text-align: center;
             z-index: 10;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 1px;
+            max-width: 90%;
+            padding: 0 20px;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
+            animation: subtitle-fade 8s infinite;
         }
 
         @keyframes title-pulse {
@@ -253,6 +325,27 @@
             50% {
                 opacity: 1;
                 transform: scale(1.05);
+            }
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes subtitle-fade {
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
             }
         }
 
@@ -377,9 +470,11 @@
             font-size: 1rem;
             z-index: 10;
             text-align: center;
+            width: 100%;
+            padding: 0 20px;
         }
 
-        /* Controls */
+        /* Enhanced Controls */
         .controls {
             position: absolute;
             top: 20px;
@@ -390,68 +485,299 @@
         }
 
         .control-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 10px 16px;
+            border-radius: 50px;
             cursor: pointer;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             transition: all 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .control-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .heart {
-                width: 180px;
-                height: 165px;
-            }
+        /* Interactive Message Box */
+        .message-box {
+            position: absolute;
+            bottom: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 500px;
+            width: 80%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            animation: message-float 8s ease-in-out infinite;
+            transition: all 0.5s ease;
+        }
 
-            .heart:before,
-            .heart:after {
-                left: 90px;
-                width: 90px;
-                height: 150px;
-            }
+        .message-box:hover {
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.15);
+        }
 
-            .heart-inner {
-                width: 150px;
-                height: 135px;
-                top: 15px;
-                left: 15px;
+        @keyframes message-float {
+            0%, 100% {
+                transform: translateY(0);
             }
-
-            .heart-inner:before,
-            .heart-inner:after {
-                left: 75px;
-                width: 75px;
-                height: 120px;
+            50% {
+                transform: translateY(-10px);
             }
+        }
 
+        .message-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ff69b4;
+            font-weight: 600;
+        }
+
+        .message-content {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* New Interactive Elements */
+        .interactive-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .interactive-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff69b4;
+            opacity: 0;
+            pointer-events: none;
+            animation: interactive-heart 5s linear forwards;
+        }
+
+        @keyframes interactive-heart {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(0.5);
+            }
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 1200px) {
+            .heart-container {
+                width: 35vmin;
+                height: 32vmin;
+            }
+            
             .title {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .heart-container {
+                width: 40vmin;
+                height: 36vmin;
+            }
+            
+            .title {
+                font-size: 3rem;
             }
             
             .subtitle {
                 font-size: 1.2rem;
             }
         }
+
+        @media (max-width: 768px) {
+            .heart-container {
+                width: 50vmin;
+                height: 45vmin;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .controls {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .footer {
+                bottom: 15px;
+                font-size: 0.9rem;
+            }
+            
+            .message-box {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .heart-container {
+                width: 60vmin;
+                height: 54vmin;
+                margin-bottom: 30px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .controls {
+                top: 10px;
+                right: 10px;
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .footer {
+                bottom: 10px;
+                font-size: 0.8rem;
+            }
+            
+            .message-box {
+                bottom: 70px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .heart-container {
+                width: 70vmin;
+                height: 63vmin;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Orientation-specific adjustments */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .heart-container {
+                width: 25vmin;
+                height: 22vmin;
+                margin-bottom: 20px;
+            }
+            
+            .title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer {
+                bottom: 10px;
+            }
+            
+            .message-box {
+                bottom: 60px;
+                padding: 10px;
+            }
+        }
+
+        /* New Theme Options */
+        .theme-options {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 10px;
+            display: none;
+            flex-wrap: wrap;
+            gap: 8px;
+            z-index: 100;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .theme-option:hover {
+            transform: scale(1.1);
+            border-color: white;
+        }
+
+        .theme-option.active {
+            border-color: white;
+            box-shadow: 0 0 10px white;
+        }
+
+        /* Particle Background */
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 class="title">My Tepthida</h1>
-        <p class="subtitle">You’re my strongest password, but I’ll never let anyone else guess you.</p>
+        <p class="subtitle">You're my strongest password, but I'll never let anyone else guess you.</p>
         
         <div class="heart-container">
             <div class="heart-glow"></div>
             <div class="heart">
+                <div class="heart-shine"></div>
                 <div class="heart-inner"></div>
             </div>
+        </div>
+        
+        <div class="message-box">
+            <div class="message-title">To My Dearest Tepthida</div>
+            <div class="message-content">Every moment with you feels like a beautiful dream. You light up my world in ways I never thought possible.</div>
         </div>
         
         <div class="fireworks-container" id="fireworks"></div>
@@ -459,10 +785,20 @@
         <div class="floating-hearts" id="floating-hearts"></div>
         <div class="floating-texts" id="floating-texts"></div>
         <div class="orbs" id="orbs"></div>
+        <div class="interactive-hearts" id="interactive-hearts"></div>
         
         <div class="controls">
             <button class="control-btn" id="pauseBtn"><i class="fas fa-pause"></i></button>
             <button class="control-btn" id="themeBtn"><i class="fas fa-palette"></i></button>
+            <button class="control-btn" id="musicBtn"><i class="fas fa-music"></i></button>
+        </div>
+        
+        <div class="theme-options" id="themeOptions">
+            <div class="theme-option active" style="background: linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e);" data-theme="default"></div>
+            <div class="theme-option" style="background: linear-gradient(135deg, #2c003e, #5d0756, #8e0e6a);" data-theme="purple"></div>
+            <div class="theme-option" style="background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);" data-theme="blue"></div>
+            <div class="theme-option" style="background: linear-gradient(135deg, #3c1518, #69140e, #a44200);" data-theme="red"></div>
+            <div class="theme-option" style="background: linear-gradient(135deg, #1a1f25, #2d3748, #4a5568);" data-theme="dark"></div>
         </div>
         
         <div class="footer">
@@ -499,8 +835,8 @@
 
         // Create floating text
         const floatingTextsContainer = document.getElementById('floating-texts');
-        const textMessages = ['Tepthida', 'Bong Songha', 'Pov Meas', 'Ekerk', 'Mouhhhh'];
-        for (let i = 0; i < 10; i++) {
+        const textMessages = ['Tepthida', 'Bong Songha', 'Pov Meas', 'Ekerk', 'Mouhhhh', 'I Love You', 'Forever Yours', 'My Love'];
+        for (let i = 0; i < 15; i++) {
             const text = document.createElement('div');
             text.classList.add('floating-text');
             text.innerHTML = textMessages[Math.floor(Math.random() * textMessages.length)];
@@ -526,13 +862,35 @@
 
         // Create heart sparkles
         const heartContainer = document.querySelector('.heart-container');
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 12; i++) {
             const sparkle = document.createElement('div');
             sparkle.classList.add('heart-sparkle');
-            sparkle.style.left = `${Math.random() * 200 + 20}px`;
-            sparkle.style.top = `${Math.random() * 180 + 20}px`;
+            
+            // Calculate positions as percentages of the heart container
+            const leftPercent = Math.random() * 80 + 10; // 10% to 90%
+            const topPercent = Math.random() * 80 + 10; // 10% to 90%
+            
+            sparkle.style.left = `${leftPercent}%`;
+            sparkle.style.top = `${topPercent}%`;
             sparkle.style.animationDelay = `${Math.random() * 2}s`;
             heartContainer.appendChild(sparkle);
+        }
+
+        // Create falling petals
+        for (let i = 0; i < 8; i++) {
+            const petal = document.createElement('div');
+            petal.classList.add('heart-petal');
+            
+            // Position petals around the heart
+            const angle = (i / 8) * Math.PI * 2;
+            const distance = 60;
+            const leftPercent = 50 + Math.cos(angle) * distance;
+            const topPercent = 50 + Math.sin(angle) * distance;
+            
+            petal.style.left = `${leftPercent}%`;
+            petal.style.top = `${topPercent}%`;
+            petal.style.animationDelay = `${Math.random() * 5}s`;
+            heartContainer.appendChild(petal);
         }
 
         // Create fireworks
@@ -597,7 +955,24 @@
         }
         
         // Continue creating fireworks
-        const fireworkInterval = setInterval(createFirework, 400);
+        let fireworkInterval = setInterval(createFirework, 400);
+        
+        // Interactive hearts on click
+        const interactiveHeartsContainer = document.getElementById('interactive-hearts');
+        document.addEventListener('click', function(e) {
+            const heart = document.createElement('div');
+            heart.classList.add('interactive-heart');
+            heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = `${e.clientX}px`;
+            heart.style.top = `${e.clientY}px`;
+            heart.style.fontSize = `${Math.random() * 30 + 20}px`;
+            interactiveHeartsContainer.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        });
         
         // Controls functionality
         let isPaused = false;
@@ -625,23 +1000,98 @@
                     el.style.animationPlayState = 'running';
                 });
                 pauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                setInterval(createFirework, 400);
+                fireworkInterval = setInterval(createFirework, 400);
             }
         });
         
         // Theme toggle functionality
         const themeBtn = document.getElementById('themeBtn');
-        let isDarkTheme = true;
+        const themeOptions = document.getElementById('themeOptions');
+        let currentTheme = 'default';
         
         themeBtn.addEventListener('click', function() {
-            isDarkTheme = !isDarkTheme;
-            
-            if (isDarkTheme) {
-                document.body.style.background = 'linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e)';
+            themeOptions.style.display = themeOptions.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Theme selection
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const theme = this.getAttribute('data-theme');
+                
+                // Update active theme
+                document.querySelectorAll('.theme-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Apply theme
+                switch(theme) {
+                    case 'default':
+                        document.body.style.background = 'linear-gradient(135deg, #0c0c2e, #1a1a4a, #2d2d6e)';
+                        break;
+                    case 'purple':
+                        document.body.style.background = 'linear-gradient(135deg, #2c003e, #5d0756, #8e0e6a)';
+                        break;
+                    case 'blue':
+                        document.body.style.background = 'linear-gradient(135deg, #0d1b2a, #1b263b, #415a77)';
+                        break;
+                    case 'red':
+                        document.body.style.background = 'linear-gradient(135deg, #3c1518, #69140e, #a44200)';
+                        break;
+                    case 'dark':
+                        document.body.style.background = 'linear-gradient(135deg, #1a1f25, #2d3748, #4a5568)';
+                        break;
+                }
+                
+                currentTheme = theme;
+                themeOptions.style.display = 'none';
+            });
+        });
+        
+        // Music button functionality
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+        let audio = null;
+        
+        musicBtn.addEventListener('click', function() {
+            if (!isPlaying) {
+                // Create audio element if it doesn't exist
+                if (!audio) {
+                    audio = new Audio();
+                    // Using a placeholder audio source - replace with actual music URL
+                    audio.src = 'https://youtu.be/pvVUtI2AcVY';
+                    audio.loop = true;
+                }
+                
+                audio.play();
+                isPlaying = true;
+                musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
             } else {
-                document.body.style.background = 'linear-gradient(135deg, #2c003e, #5d0756, #8e0e6a)';
+                audio.pause();
+                isPlaying = false;
+                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
             }
         });
+        
+        // Change message box content periodically
+        const messageContent = document.querySelector('.message-content');
+        const messages = [
+            "Life with you feels like cheating in a game—everything is suddenly way too easy and way more fun. Want to team up forever?",
+            "You're my favorite notification, my best plot twist, and the only person I want to annoy for the rest of my life.",
+            "Let's make a lifetime deal: I'll bring the snacks, you bring the smile, and together we win the whole story.",
+            "I'm not saying you're my favorite person… but if we were on a sinking ship, I'd definitely share my door with you.",
+        ];
+        
+        let messageIndex = 0;
+        setInterval(() => {
+            messageIndex = (messageIndex + 1) % messages.length;
+            messageContent.style.opacity = 0;
+            setTimeout(() => {
+                messageContent.textContent = messages[messageIndex];
+                messageContent.style.opacity = 1;
+            }, 500);
+        }, 8000);
+        
     </script>
 </body>
 </html>
